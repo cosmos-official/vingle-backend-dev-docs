@@ -25,6 +25,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Get playwright for Mermaid support
+        run: npx playwright install --with-deps chromium
+
       - name: Copy documents
         run: |
           git clone --depth 1 --filter=blob:none --sparse https://x-access-token:${{ steps.app_token.outputs.token }}@github.com/cosmos-official/${{ vars.TARGET_REPOSITORY }} temp-repo
